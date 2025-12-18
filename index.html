@@ -3,67 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suppliviosteel | Digital Card</title>
+    <title>Digital Business Card | Suppliviosteel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --steel: #2c3e50; --silver: #bdc3c7; --blue: #2980b9; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: white; width: 90%; max-width: 380px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; text-align: center; border-top: 8px solid var(--steel); }
-        .header { padding: 40px 20px 20px; }
-        .logo { font-size: 28px; font-weight: 800; color: var(--steel); letter-spacing: -1px; margin-bottom: 5px; }
-        .logo span { color: var(--blue); }
-        h1 { font-size: 22px; margin: 10px 0 5px; color: #333; }
-        p { color: #7f8c8d; margin-bottom: 30px; font-weight: 500; }
-        .btn { display: block; background: var(--steel); color: white; padding: 18px; text-decoration: none; border-radius: 12px; font-weight: bold; margin: 0 30px 20px; transition: 0.3s; font-size: 16px; cursor: pointer; border: none; width: calc(100% - 60px); }
-        .btn:active { transform: scale(0.98); background: var(--blue); }
-        .links { border-top: 1px solid #eee; padding: 20px; display: flex; justify-content: space-around; background: #fafafa; }
-        .links a { color: var(--steel); text-decoration: none; font-size: 14px; font-weight: 600; }
-        .instruction { font-size: 12px; color: #999; margin-bottom: 15px; }
+        :root {
+            --primary-color: #004a99; /* Professional Steel Blue */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-gray: #f4f7f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding-bottom: 40px;
+        }
+
+        /* Company Logo Section */
+        .logo-section {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .company-logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        /* Profile Card - Floating effect like CEAT */
+        .profile-card {
+            background: white;
+            margin: 0 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .profile-info h1 {
+            font-size: 20px;
+            margin: 0;
+            color: var(--primary-color);
+        }
+        .profile-info p {
+            font-size: 14px;
+            margin: 5px 0 0;
+            color: var(--text-light);
+        }
+
+        /* Contact Info List */
+        .contact-list {
+            padding: 30px 25px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+        .contact-item i {
+            width: 35px;
+            height: 35px;
+            background: #eef2f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        .contact-text {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Center Save Button */
+        .save-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .save-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px; /* Pill shape */
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,74,153,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .save-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Footer Socials */
+        .social-footer {
+            border-top: 1px dashed #ccc;
+            margin: 20px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            font-size: 20px;
+            color: var(--text-light);
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="header">
-            <div class="logo">SUPPLIVIO<span>STEEL</span></div>
-            <h1>Your Name</h1>
-            <p>Director | Suppliviosteel</p>
-        </div>
-        
-        <button class="btn" onclick="downloadVCard()">SAVE CONTACT TO PHONE</button>
-        <div class="instruction">Tap and select "Open with Contacts" if prompted</div>
 
-        <div class="links">
-            <a href="https://suppliviosteel.com">Website</a>
-            <a href="mailto:suppliviosteel@gmail.com">Email</a>
-            <a href="tel:+917039631721">Call</a>
+<div class="container">
+    <div class="logo-section">
+        <img src="your-logo-url.png" class="company-logo">
+    </div>
+
+    <div class="profile-card">
+        <img src="https://via.placeholder.com/80" class="profile-img" alt="Profile">
+        <div class="profile-info">
+            <h1>First Last Name</h1>
+            <p>Designation / Title</p>
         </div>
     </div>
 
-    <script>
-        function downloadVCard() {
-            // EDIT YOUR DETAILS HERE
-            const vcardData = `BEGIN:VCARD
+    <div class="contact-list">
+        <a href="tel:+917039631721" class="contact-item">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <span class="contact-text">+91 7039631721</span>
+        </a>
+        <a href="https://wa.me/917039631721" class="contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="contact-text">+91 7039631721</span>
+        </a>
+        <a href="mailto:suppliviosteel@gmail.com" class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span class="contact-text">suppliviosteel@gmail.com</span>
+        </a>
+        <a href="https://www.suppliviosteel.com" class="contact-item">
+            <i class="fa-solid fa-globe"></i>
+            <span class="contact-text">www.suppliviosteel.com</span>
+        </a>
+        <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="contact-text">3,4 Daruwala Building, 264/271, P B Marg,</br>
+                Next to Platinium Mall, Mumbai-400004</span>
+        </div>
+    </div>
+
+    <div class="save-container">
+        <button class="save-btn" onclick="saveContact()">
+            <i class="fa-solid fa-id-card"></i> SAVE CONTACT
+        </button>
+    </div>
+
+    <div class="social-footer">
+        <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+</div>
+
+<script>
+    function saveContact() {
+        // vCard data creation
+        const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:Your Full Name
+FN:Tusharr Jain
 ORG:Suppliviosteel
-TITLE:Director
+TITLE:Designation
 TEL;TYPE=CELL,VOICE:+917039631721
+TEL;TYPE=WORK,VOICE:+917039631721
 EMAIL;TYPE=PREF,INTERNET:suppliviosteel@gmail.com
-URL:https://suppliviosteel.com
+URL:https://www.suppliviosteel.com
+ADR;TYPE=WORK:;;Office Address;Mumbai;;400001;India
 END:VCARD`;
 
-            const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'Suppliviosteel.vcf');
-            
-            // This is the trick for iOS and newer Androids to trigger the "Open" action
-            if (navigator.msSaveBlob) { 
-                navigator.msSaveBlob(blob, 'Suppliviosteel.vcf');
-            } else {
-                link.click();
-            }
-        }
-    </script>
+        const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+        const url = window.URL.createObjectURL(blob);
+        const newLink = document.createElement('a');
+        newLink.download = "Suppliviosteel_Contact.vcf";
+        newLink.href = url;
+        newLink.click();
+    }
+</script>
+
 </body>
 </html>
