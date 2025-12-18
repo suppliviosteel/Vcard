@@ -13,10 +13,11 @@
         .logo span { color: var(--blue); }
         h1 { font-size: 22px; margin: 10px 0 5px; color: #333; }
         p { color: #7f8c8d; margin-bottom: 30px; font-weight: 500; }
-        .btn { display: block; background: var(--steel); color: white; padding: 18px; text-decoration: none; border-radius: 12px; font-weight: bold; margin: 0 30px 20px; transition: 0.3s; font-size: 16px; box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3); }
+        .btn { display: block; background: var(--steel); color: white; padding: 18px; text-decoration: none; border-radius: 12px; font-weight: bold; margin: 0 30px 20px; transition: 0.3s; font-size: 16px; cursor: pointer; border: none; width: calc(100% - 60px); }
         .btn:active { transform: scale(0.98); background: var(--blue); }
         .links { border-top: 1px solid #eee; padding: 20px; display: flex; justify-content: space-around; background: #fafafa; }
         .links a { color: var(--steel); text-decoration: none; font-size: 14px; font-weight: 600; }
+        .instruction { font-size: 12px; color: #999; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -24,16 +25,45 @@
         <div class="header">
             <div class="logo">SUPPLIVIO<span>STEEL</span></div>
             <h1>Your Name</h1>
-            <p>Director | Industrial Steel Solutions</p>
+            <p>Director | Suppliviosteel</p>
         </div>
         
-        <a href="https://drive.google.com/uc?export=download&id=1zqyumoPWiDHgMvj4OpDjEjGA4-NSDmJx" class="btn">SAVE CONTACT TO PHONE</a>
+        <button class="btn" onclick="downloadVCard()">SAVE CONTACT TO PHONE</button>
+        <div class="instruction">Tap and select "Open with Contacts" if prompted</div>
 
         <div class="links">
             <a href="https://suppliviosteel.com">Website</a>
-            <a href="mailto:uppliviosteel@gmail.com.com">Email</a>
-            <a href="tel:+917039631721">Call Us</a>
+            <a href="mailto:suppliviosteel@gmail.com">Email</a>
+            <a href="tel:+917039631721">Call</a>
         </div>
     </div>
+
+    <script>
+        function downloadVCard() {
+            // EDIT YOUR DETAILS HERE
+            const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Your Full Name
+ORG:Suppliviosteel
+TITLE:Director
+TEL;TYPE=CELL,VOICE:+917039631721
+EMAIL;TYPE=PREF,INTERNET:suppliviosteel@gmail.com
+URL:https://suppliviosteel.com
+END:VCARD`;
+
+            const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'Suppliviosteel.vcf');
+            
+            // This is the trick for iOS and newer Androids to trigger the "Open" action
+            if (navigator.msSaveBlob) { 
+                navigator.msSaveBlob(blob, 'Suppliviosteel.vcf');
+            } else {
+                link.click();
+            }
+        }
+    </script>
 </body>
 </html>
